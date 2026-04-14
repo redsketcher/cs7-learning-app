@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>CS7 — Oxford Book 7 Interactive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ══════ HEADER ══════ -->
+<header class="app-header">
+  <div class="app-logo" onclick="goHome()" style="cursor:pointer">CS<span>7</span></div>
+  <div class="breadcrumb" id="breadcrumb">Oxford Book 7 · Choose a lesson</div>
+  <div class="progress-pill" id="progressPill">0 / 24 done</div>
+  <button class="menu-toggle" onclick="toggleSidebar()" aria-label="Open menu">☰</button>
+</header>
+
+<div class="app-body">
+  <!-- sidebar built by lessons.js -->
+  <aside class="sidebar" id="sidebar"></aside>
+  <!-- content built by lessons.js -->
+  <main class="content" id="mainContent"></main>
+</div>
+
+<!-- Glossary popup -->
+<div class="gloss-overlay" id="glossModal" onclick="closeGlossary()">
+  <div class="gloss-card" onclick="event.stopPropagation()">
+    <div class="gloss-header">
+      <span class="gloss-label">📖 Definition</span>
+      <button class="gloss-close" onclick="closeGlossary()" aria-label="Close">✕</button>
+    </div>
+    <div class="gloss-term" id="glossTerm"></div>
+    <div class="gloss-def" id="glossDef"></div>
+  </div>
+</div>
+
+<!-- Load unit data first, then the engine -->
+<script src="unit1.js"></script>
+<script src="unit2.js"></script>
+<script src="unit3.js"></script>
+<script src="unit4.js"></script>
+<script src="lessons.js"></script>
+
+</body>
+</html>
