@@ -75,11 +75,25 @@ Step 4: Learn computing
 Step 5: Go home</span></pre>
         </div>
       `,
-      questions:[
-        {q:'What is a sequence in programming?',opts:['A random set of instructions','A set of instructions that run one after another in order','A loop that repeats forever','A decision the computer makes'],ans:1,why:'A sequence is an ordered list of instructions executed one at a time from top to bottom. This is the most fundamental concept in programming.'},
-        {q:'In Scratch, which block runs FIRST in a sequence?',opts:['The bottom block','The longest block','The top block','The blue block'],ans:2,why:'Scratch (and Python) execute from top to bottom. The topmost block in a stack runs first.'},
-        {q:'What happens if you change the order of steps in a sequence?',opts:['Nothing — order doesn\'t matter','The program might produce different or wrong results','The program runs faster','The program skips the moved step'],ans:1,why:'Order is critical in sequences. Moving steps changes what the program does and can produce incorrect or unexpected results.'},
-        {q:'Which of these is an example of a sequence in real life?',opts:['All lights in a house turning on at once','A recipe: mix, bake, cool, decorate in order','The weather changing','Choosing which road to take'],ans:1,why:'A recipe is a perfect real-life sequence — each step must happen in order. You can\'t decorate the cake before you bake it.'},
+      questionSets:[
+        [
+          {q:'What is a sequence in programming?',opts:['A random set of instructions','A set of instructions that run one after another in order','A loop that repeats forever','A decision the computer makes'],ans:1,why:'A sequence is an ordered list of instructions executed one at a time from top to bottom. This is the most fundamental concept in programming.'},
+          {q:'In Scratch, which block runs FIRST in a sequence?',opts:['The bottom block','The longest block','The top block','The blue block'],ans:2,why:'Scratch (and Python) execute from top to bottom. The topmost block in a stack runs first.'},
+          {q:'What happens if you change the order of steps in a sequence?',opts:['Nothing — order doesn\'t matter','The program might produce different or wrong results','The program runs faster','The program skips the moved step'],ans:1,why:'Order is critical in sequences. Moving steps changes what the program does and can produce incorrect or unexpected results.'},
+          {q:'Which of these is an example of a sequence in real life?',opts:['All lights in a house turning on at once','A recipe: mix, bake, cool, decorate in order','The weather changing','Choosing which road to take'],ans:1,why:'A recipe is a perfect real-life sequence — each step must happen in order. You can\'t decorate the cake before you bake it.'},
+        ],
+        [
+          {q:'In Scratch, which block is usually at the TOP of every script?',opts:['A move block','A say block','An "if" block','A "when green flag clicked" or event block'],ans:3,why:'Scripts start with an event block (like "when green flag clicked") which tells Scratch what triggers the sequence to begin.'},
+          {q:'You have 3 steps: A, B, C. You move C to the top. What order runs now?',opts:['A, B, C','B, A, C','C, A, B','A, C, B'],ans:2,why:'Moving C to the top means it runs first. The order becomes C, then A, then B — top to bottom always.'},
+          {q:'What is an algorithm?',opts:['A type of computer virus','A step-by-step set of instructions for solving a problem','A Scratch sprite','A computer\'s processor'],ans:1,why:'An algorithm is a precise, ordered set of steps for solving a problem. A sequence in Scratch or Python is an algorithm — instructions the computer follows one by one.'},
+          {q:'Which word best describes how a sequence runs?',opts:['Randomly','Simultaneously (all at once)','Linearly (one step at a time, in order)','Conditionally'],ans:2,why:'A sequence runs linearly — one instruction at a time, in the exact order they appear, from top to bottom.'},
+        ],
+        [
+          {q:'You are getting dressed. Why must "put on socks" come BEFORE "put on shoes"?',opts:['It does not matter which order','Shoes must go on before socks','Order matters — you cannot put shoes on first without the socks','Socks go on the left foot first'],ans:2,why:'Just like in programming, some real-world steps depend on earlier ones. The order is not flexible — change it and the result is wrong.'},
+          {q:'In Scratch, what does the "stop all" block do in a sequence?',opts:['Pauses the program for 1 second','Ends all running scripts immediately','Moves the sprite to the centre','Resets all variables'],ans:1,why:'"Stop all" terminates every script that is running — it is the Scratch equivalent of ending the program. It is always the last step in a sequence that needs a clean exit.'},
+          {q:'A program has 5 steps. Step 3 causes an error. What happens to steps 4 and 5?',opts:['They run normally','They are skipped — the program stops at the error','They run in reverse','Step 5 runs but step 4 is skipped'],ans:1,why:'When an error occurs in a sequence, execution stops at that point. Steps after the error do not run unless the error is handled.'},
+          {q:'Which best describes the relationship between an algorithm and a program?',opts:['They are exactly the same thing','An algorithm is the plan; a program is the algorithm written in a language a computer can run','A program is the plan; an algorithm is the running version','Algorithms are only used in maths, not programming'],ans:1,why:'An algorithm is a logical plan — language-independent. A program is that algorithm implemented in a specific language (Scratch, Python, etc.) that a computer can execute.'},
+        ],
       ]
     },
 
@@ -157,11 +171,25 @@ Loop number 4
 Loop number 5</span></pre>
         </div>
       `,
-      questions:[
-        {q:'What is the purpose of a loop?',opts:['To stop a program','To repeat a set of instructions','To make decisions','To store information'],ans:1,why:'A loop allows a block of code to be repeated multiple times without writing it out multiple times. This is fundamental to efficient programming.'},
-        {q:'In Python, what does range(5) produce?',opts:['The numbers 1,2,3,4,5','The numbers 0,1,2,3,4','The number 5 only','A random number'],ans:1,why:'range(5) produces 0,1,2,3,4 — five numbers starting from 0. To get 1-5 you\'d write range(1, 6).'},
-        {q:'Which type of loop would you use to keep a game running until the player quits?',opts:['A loop that runs exactly 10 times','A for loop with range(100)','A forever/while True loop','A sequence'],ans:2,why:'A game runs until the player decides to stop — that\'s an indefinite/forever loop. You don\'t know in advance how many times it needs to run.'},
-        {q:'How many times does this print something? for i in range(3): print(i)',opts:['0 times','1 time','3 times','Infinite times'],ans:2,why:'range(3) gives 0, 1, 2 — three values. So the loop runs 3 times, printing 0, then 1, then 2.'},
+      questionSets:[
+        [
+          {q:'What is the purpose of a loop?',opts:['To stop a program','To repeat a set of instructions','To make decisions','To store information'],ans:1,why:'A loop allows a block of code to be repeated multiple times without writing it out multiple times. This is fundamental to efficient programming.'},
+          {q:'In Python, what does range(5) produce?',opts:['The numbers 1,2,3,4,5','The numbers 0,1,2,3,4','The number 5 only','A random number'],ans:1,why:'range(5) produces 0,1,2,3,4 — five numbers starting from 0. To get 1-5 you\'d write range(1, 6).'},
+          {q:'Which type of loop would you use to keep a game running until the player quits?',opts:['A loop that runs exactly 10 times','A for loop with range(100)','A forever/while True loop','A sequence'],ans:2,why:'A game runs until the player decides to stop — that\'s an indefinite/forever loop. You don\'t know in advance how many times it needs to run.'},
+          {q:'How many times does this print something? for i in range(3): print(i)',opts:['0 times','1 time','3 times','Infinite times'],ans:2,why:'range(3) gives 0, 1, 2 — three values. So the loop runs 3 times, printing 0, then 1, then 2.'},
+        ],
+        [
+          {q:'What is the difference between a "count-controlled" and a "condition-controlled" loop?',opts:['There is no difference','A count-controlled loop runs a fixed number of times; a condition-controlled loop runs until something happens','Count-controlled loops are faster','Condition-controlled loops can only run once'],ans:1,why:'For loops are count-controlled — you know in advance how many times. While loops are condition-controlled — they keep going until the condition becomes false.'},
+          {q:'In Scratch, the "repeat 10" block is equivalent to which Python loop?',opts:['while True:','for i in range(10):','if i < 10:','loop(10)'],ans:1,why:'"repeat 10" and "for i in range(10):" both run their contents exactly 10 times — a count-controlled loop.'},
+          {q:'What does "forever" mean in Scratch?',opts:['The loop runs for 1 minute','The loop never stops on its own — it runs until the program is stopped','The loop runs exactly 1000 times','The sprite freezes in place'],ans:1,why:'The "forever" block in Scratch runs indefinitely — equivalent to "while True:" in Python. It only stops when the program ends or a "stop" block runs.'},
+          {q:'A washing machine runs its cycle exactly 3 times. Which loop type is this?',opts:['Condition-controlled (while)','Count-controlled (for)','Forever loop','Sequence'],ans:1,why:'The number of repetitions is known in advance (3 times) — this is a count-controlled loop, like "for i in range(3):" in Python.'},
+        ],
+        [
+          {q:'What is an infinite loop and when is it a PROBLEM?',opts:['A loop that runs 1000 times — always a problem','A loop that never stops — a problem when unintentional, because the program freezes','A loop inside another loop — always desirable','A loop that runs once — never a problem'],ans:1,why:'An infinite loop is intentional in games (keep running until quit) but a bug when accidental — the program freezes because it can never move on.'},
+          {q:'In Scratch, you want to move a sprite 10 steps, wait 0.5 seconds, and repeat this 5 times. What do you use?',opts:['5 separate move blocks','A "repeat 5" loop containing "move 10 steps" and "wait 0.5 seconds"','A "forever" loop','An "if" block'],ans:1,why:'A "repeat 5" loop is ideal — it runs the two blocks inside it exactly 5 times, avoiding repetitive stacking of the same blocks.'},
+          {q:'What does "nesting" loops mean?',opts:['Storing loops in variables','Putting one loop inside another loop','Combining a loop with an if statement','Naming your loops'],ans:1,why:'Nested loops have one loop running inside another. For each iteration of the outer loop, the inner loop runs completely. Common in grids and tables.'},
+          {q:'for i in range(1, 6): — what values does i take?',opts:['0,1,2,3,4,5','1,2,3,4,5','1,2,3,4,5,6','0,1,2,3,4'],ans:1,why:'range(start, stop) goes from start up to but NOT including stop. So range(1, 6) gives 1, 2, 3, 4, 5.'},
+        ],
       ]
     },
 
@@ -236,11 +264,25 @@ Loop number 5</span></pre>
     <span class="cf">print</span>(<span class="cs">"Sorry, not today"</span>)</pre>
         </div>
       `,
-      questions:[
-        {q:'What does an "if" statement do?',opts:['Repeats code a set number of times','Stores a value in memory','Runs a block of code only if a condition is True','Displays text on screen'],ans:2,why:'An if statement tests a condition. If the condition is True, the indented code block runs. If False, it\'s skipped.'},
-        {q:'What are the only two possible results of a condition check?',opts:['Yes and No','1 and 2','True and False','On and Off'],ans:2,why:'Conditions evaluate to True or False — there is no in-between. This is Boolean logic, named after mathematician George Boole.'},
-        {q:'What does "else" do in an if/else statement?',opts:['It always runs regardless of the condition','It runs when ALL the if/elif conditions are False','It creates a loop','It stores a result'],ans:1,why:'"else" is the default case — it runs when none of the if or elif conditions evaluated to True. Only one branch ever runs.'},
-        {q:'if score >= 70 and score < 90 — when is this True?',opts:['When score is exactly 70 or 90','When score is between 70 and 89 inclusive','When score is greater than 90','When score is less than 70'],ans:1,why:'Both conditions must be True. score must be at least 70 AND less than 90 — so 70-89 inclusive. 90 fails the second condition (not < 90).'},
+      questionSets:[
+        [
+          {q:'What does an "if" statement do?',opts:['Repeats code a set number of times','Stores a value in memory','Runs a block of code only if a condition is True','Displays text on screen'],ans:2,why:'An if statement tests a condition. If the condition is True, the indented code block runs. If False, it\'s skipped.'},
+          {q:'What are the only two possible results of a condition check?',opts:['Yes and No','1 and 2','True and False','On and Off'],ans:2,why:'Conditions evaluate to True or False — there is no in-between. This is Boolean logic, named after mathematician George Boole.'},
+          {q:'What does "else" do in an if/else statement?',opts:['It always runs regardless of the condition','It runs when ALL the if/elif conditions are False','It creates a loop','It stores a result'],ans:1,why:'"else" is the default case — it runs when none of the if or elif conditions evaluated to True. Only one branch ever runs.'},
+          {q:'if score >= 70 and score < 90 — when is this True?',opts:['When score is exactly 70 or 90','When score is between 70 and 89 inclusive','When score is greater than 90','When score is less than 70'],ans:1,why:'Both conditions must be True. score must be at least 70 AND less than 90 — so 70-89 inclusive. 90 fails the second condition (not < 90).'},
+        ],
+        [
+          {q:'In Scratch, what does "if <touching colour red> then" do?',opts:['Changes the sprite colour to red','Checks whether the sprite is touching something red and runs the inside blocks only if true','Repeats until the sprite turns red','Moves to a red backdrop'],ans:1,why:'This is a condition — it tests whether something is true (touching red?) and only runs the contained blocks when the condition is met.'},
+          {q:'You have: if x > 10: print("big") else: print("small"). x = 10. What prints?',opts:['"big"','"small"','Nothing','An error'],ans:1,why:'10 > 10 is False (10 is not greater than 10). So the else branch runs and "small" is printed.'},
+          {q:'What is the "and" operator used for in a condition?',opts:['Adding two numbers','Making BOTH conditions must be true for the overall condition to be true','Making either condition true is enough','Comparing two strings'],ans:1,why:'"and" requires both sides to be True. If either is False, the whole condition is False. Use "or" when either condition being True is sufficient.'},
+          {q:'Which Scratch block lets you choose between two options based on a condition?',opts:['"repeat until"','"if/else" block','"forever" block','"wait" block'],ans:1,why:'The "if/else" block in Scratch runs one set of blocks if the condition is true, and a different set if it is false — two distinct paths.'},
+        ],
+        [
+          {q:'What does the "or" operator do?',opts:['Both conditions must be true','The condition is true if EITHER side is true','Reverses the condition','Adds two conditions together as numbers'],ans:1,why:'"or" is true when at least one of the conditions is true. It is only false when BOTH sides are false.'},
+          {q:'if age >= 18: print("adult") elif age >= 13: print("teen") else: print("child") — what prints when age = 13?',opts:['"adult"','"teen"','"child"','Nothing'],ans:1,why:'age >= 18 is False (13 is not >= 18). age >= 13 is True (13 = 13). So "teen" prints. Once a true branch is found, the rest are skipped.'},
+          {q:'What does the "not" operator do to a condition?',opts:['Makes it louder','Reverses it — True becomes False, False becomes True','Adds an extra condition','Multiplies the result'],ans:1,why:'"not" flips the boolean value. "not True" = False. "not False" = True. Useful for checking if something is NOT the case.'},
+          {q:'A game checks: if lives == 0 and score > 100: — when does this run?',opts:['When lives is 0 OR score is over 100','When lives is exactly 0 AND score is over 100 at the same time','When lives is 0 only','When score is over 100 only'],ans:1,why:'Both conditions must be true simultaneously. The player must have zero lives AND a score over 100 at the same moment for this branch to run.'},
+        ],
       ]
     },
 
@@ -297,11 +339,25 @@ Loop number 5</span></pre>
         <span class="cf">print</span>(<span class="cs">"Wrong. Lives left:"</span>, <span class="cv">lives</span>)</pre>
         </div>
       `,
-      questions:[
-        {q:'What is a variable in programming?',opts:['A fixed value that never changes','A named storage location that holds a value','A type of loop','A decision the computer makes'],ans:1,why:'A variable is a named location in memory that stores a value. The value can be read, used in calculations, and changed during the program.'},
-        {q:'You have: score = 10, then score = score + 5. What is score now?',opts:['10','5','15','score + 5'],ans:2,why:'score starts at 10. Then score is updated to score + 5 = 10 + 5 = 15. The right-hand side is calculated first, then stored back into score.'},
-        {q:'Which variable name follows good naming conventions?',opts:['1score','player score','player_score','PLAYER'],ans:2,why:'"player_score" uses an underscore, lowercase letters, and clearly describes what it stores. Variable names can\'t start with numbers or contain spaces.'},
-        {q:'What type of value does a Boolean variable hold?',opts:['A number','A word','True or False only','A list of items'],ans:2,why:'Boolean variables only hold True or False. They\'re used for flags and conditions — e.g. is_game_over = True, is_logged_in = False.'},
+      questionSets:[
+        [
+          {q:'What is a variable in programming?',opts:['A fixed value that never changes','A named storage location that holds a value','A type of loop','A decision the computer makes'],ans:1,why:'A variable is a named location in memory that stores a value. The value can be read, used in calculations, and changed during the program.'},
+          {q:'You have: score = 10, then score = score + 5. What is score now?',opts:['10','5','15','score + 5'],ans:2,why:'score starts at 10. Then score is updated to score + 5 = 10 + 5 = 15. The right-hand side is calculated first, then stored back into score.'},
+          {q:'Which variable name follows good naming conventions?',opts:['1score','player score','player_score','PLAYER'],ans:2,why:'"player_score" uses an underscore, lowercase letters, and clearly describes what it stores. Variable names can\'t start with numbers or contain spaces.'},
+          {q:'What type of value does a Boolean variable hold?',opts:['A number','A word','True or False only','A list of items'],ans:2,why:'Boolean variables only hold True or False. They\'re used for flags and conditions — e.g. is_game_over = True, is_logged_in = False.'},
+        ],
+        [
+          {q:'In Scratch, where do you create a new variable?',opts:['In the Costumes tab','In the Variables category — click "Make a Variable"','In the Sounds tab','By right-clicking the stage'],ans:1,why:'Variables in Scratch are created in the Variables block category. Once created, they appear as blocks you can use in scripts and as a display on the stage.'},
+          {q:'lives = 3, then lives = lives - 1. What is lives now?',opts:['3','1','2','lives - 1'],ans:2,why:'lives starts at 3. Then lives = lives - 1 = 3 - 1 = 2. The right side is calculated first, then stored back into the variable.'},
+          {q:'What is the difference between a variable and a constant?',opts:['There is no difference','A variable can change during the program; a constant is fixed and never changes','A constant can change; a variable cannot','Variables are only used in Scratch'],ans:1,why:'Variables are designed to hold values that change (score, lives, position). Constants hold fixed values that should never change (like pi = 3.14159).'},
+          {q:'Which of these is the best variable name for storing a player\'s high score?',opts:['x','hs','high_score','HIGH SCORE'],ans:2,why:'"high_score" is descriptive, lowercase, uses an underscore instead of a space, and makes the code readable. Short names like x give no clue about what is stored.'},
+        ],
+        [
+          {q:'score = 0. Then inside a loop that runs 5 times: score = score + 10. What is score at the end?',opts:['10','50','5','0'],ans:1,why:'Each loop iteration adds 10 to score. After 5 iterations: 0+10+10+10+10+10 = 50.'},
+          {q:'What does it mean to "initialise" a variable?',opts:['Delete the variable','Give the variable its starting value before using it','Print the variable\'s value','Rename the variable'],ans:1,why:'Initialising means setting the starting value — e.g. score = 0 before a game begins. Without initialisation, a variable may have an unpredictable starting value.'},
+          {q:'In Scratch, the variable "timer" shows 00:45 on screen. What kind of variable is this?',opts:['A hidden variable','A Boolean','A global variable shown on the stage','A local variable'],ans:2,why:'Variables in Scratch can be displayed on the stage. A timer visible to the player is a global variable (available to all sprites) shown as a stage monitor.'},
+          {q:'You swap two variables: temp = a, a = b, b = temp. Why is the "temp" variable needed?',opts:['It is not needed','Without temp, assigning a = b overwrites the original value of a before you can save it into b','temp makes the swap faster','You need temp to create new variables'],ans:1,why:'Without a temporary holder, a = b would overwrite a\'s value immediately — and that value would be lost forever. temp preserves it while the swap happens.'},
+        ],
       ]
     },
 
@@ -371,11 +427,25 @@ Loop number 5</span></pre>
     <span class="cf">on_key</span>(<span class="cv">pressed</span>)</pre>
         </div>
       `,
-      questions:[
-        {q:'What is an event in Scratch?',opts:['A type of variable','Something that triggers a set of blocks to run','A loop that repeats forever','A way to change costume'],ans:1,why:'An event is a trigger — like clicking the green flag, pressing a key, or clicking a sprite — that causes a specific set of blocks to start running.'},
-        {q:'Which Scratch block starts a script when the program begins?',opts:['When space key pressed','When this sprite clicked','When green flag clicked','When I receive'],ans:2,why:'"When green flag clicked" is the standard start event in Scratch. It\'s equivalent to the main() function or entry point in other languages.'},
-        {q:'What makes event-driven programs different from simple sequences?',opts:['They don\'t use loops','They wait for user input and react, rather than running once','They can\'t use variables','They always run faster'],ans:1,why:'Event-driven programs run continuously, listening for events and responding to them. Simple sequences run once from top to bottom and stop.'},
-        {q:'In Scratch, what does "When I receive [message]" allow?',opts:['The sprite to move automatically','Communication and coordination between different sprites','The program to end','The score to increase'],ans:1,why:'"When I receive" lets sprites communicate with each other via broadcast messages — useful for coordinating multiple characters in a game.'},
+      questionSets:[
+        [
+          {q:'What is an event in Scratch?',opts:['A type of variable','Something that triggers a set of blocks to run','A loop that repeats forever','A way to change costume'],ans:1,why:'An event is a trigger — like clicking the green flag, pressing a key, or clicking a sprite — that causes a specific set of blocks to start running.'},
+          {q:'Which Scratch block starts a script when the program begins?',opts:['When space key pressed','When this sprite clicked','When green flag clicked','When I receive'],ans:2,why:'"When green flag clicked" is the standard start event in Scratch. It\'s equivalent to the main() function or entry point in other languages.'},
+          {q:'What makes event-driven programs different from simple sequences?',opts:['They don\'t use loops','They wait for user input and react, rather than running once','They can\'t use variables','They always run faster'],ans:1,why:'Event-driven programs run continuously, listening for events and responding to them. Simple sequences run once from top to bottom and stop.'},
+          {q:'In Scratch, what does "When I receive [message]" allow?',opts:['The sprite to move automatically','Communication and coordination between different sprites','The program to end','The score to increase'],ans:1,why:'"When I receive" lets sprites communicate with each other via broadcast messages — useful for coordinating multiple characters in a game.'},
+        ],
+        [
+          {q:'You press the space bar in a Scratch game and the sprite jumps. What concept is this?',opts:['A loop','A variable','An event — key press triggers a script','A sequence'],ans:2,why:'Responding to a key press is event-driven programming. The key press is the event; the jump is the response. The script only runs when the event occurs.'},
+          {q:'What is a "broadcast" in Scratch?',opts:['A way to make text appear on screen','A message sent to all sprites that can trigger scripts listening for it','A type of sound effect','A way to share your project online'],ans:1,why:'Broadcast sends a named message to all sprites. Any sprite with a "When I receive [name]" block will respond when that broadcast is sent.'},
+          {q:'Why is "When green flag clicked" used at the start of most scripts?',opts:['It is the prettiest block','It is the standard starting event — pressing the green flag launches the program','It is the only block that allows variables','It runs automatically without any user action'],ans:1,why:'The green flag is the conventional "run" button in Scratch. "When green flag clicked" ensures your script starts when the user deliberately starts the program.'},
+          {q:'A sprite has two scripts: one "When green flag clicked" and one "When space key pressed". How many scripts can run at the same time?',opts:['Only one — scripts cannot run simultaneously','Both can run at the same time if the events happen together','Only the first one','Only the second one'],ans:1,why:'Scratch is event-driven — multiple scripts can run simultaneously, each triggered by its own event. This enables complex games with many things happening at once.'},
+        ],
+        [
+          {q:'What does "event-driven programming" mean?',opts:['Programming that only uses events, no loops','Programs that respond to user actions and other triggers rather than running once from top to bottom','Programming that is very fast','Programming that uses no variables'],ans:1,why:'Event-driven programs wait for events (clicks, key presses, timers) and respond with specific code. The program is reactive rather than running a fixed sequence once.'},
+          {q:'In Scratch, "When this sprite clicked" fires when:',opts:['The sprite is near the edge','The user clicks directly on the sprite with the mouse or finger','The sprite touches another sprite','The green flag is clicked'],ans:1,why:'"When this sprite clicked" only fires when the user clicks or taps that specific sprite. Each sprite can have its own click handler.'},
+          {q:'You want a sound to play when two sprites touch. Which approach is best?',opts:['A sequence that plays the sound on loop','An event check: "if touching [sprite]" inside a forever loop, then play sound','A variable that stores the sound','A broadcast sent at the start'],ans:1,why:'A forever loop continuously checking the condition is the standard pattern for collision detection in Scratch — check every frame, react when true.'},
+          {q:'What is the advantage of event-driven programming for games?',opts:['Games run faster without events','The program naturally handles multiple simultaneous inputs — move left, jump, shoot — each with its own event handler','Events make code shorter only','Events prevent the use of loops'],ans:1,why:'Games require reacting to many different inputs simultaneously. Event-driven architecture handles this elegantly — each key, click, or collision triggers its own specific response.'},
+        ],
       ]
     },
 
@@ -456,11 +526,25 @@ Loop number 5</span></pre>
     <span class="cf">print</span>(<span class="cs">f"💀 Game over! The answer was {secret}"</span>)</pre>
         </div>
       `,
-      questions:[
-        {q:'Which concept do you use to keep a game running until the player quits?',opts:['A sequence','A condition','A loop','A variable'],ans:2,why:'A loop (while the game is running) keeps the game going. Without a loop, the program would run once and stop.'},
-        {q:'The game needs to remember the player\'s score. Which concept is that?',opts:['An event','A variable','A loop','A sequence'],ans:1,why:'Variables store information that changes during the program — like a score counter, lives remaining, or player name.'},
-        {q:'The player presses the LEFT arrow key and the sprite moves. What concept is this?',opts:['A loop','A variable','A sequence','An event'],ans:3,why:'Responding to a key press is an event. The event triggers a set of code — in this case, moving the sprite left.'},
-        {q:'The game checks: "if touching star then add 1 to score". What concept is this?',opts:['A loop','A sequence','A condition','A variable'],ans:2,why:'Checking "if touching star" is a condition. If it\'s true, the score increases; if false, nothing happens. That\'s a conditional decision.'},
+      questionSets:[
+        [
+          {q:'Which concept do you use to keep a game running until the player quits?',opts:['A sequence','A condition','A loop','A variable'],ans:2,why:'A loop (while the game is running) keeps the game going. Without a loop, the program would run once and stop.'},
+          {q:'The game needs to remember the player\'s score. Which concept is that?',opts:['An event','A variable','A loop','A sequence'],ans:1,why:'Variables store information that changes during the program — like a score counter, lives remaining, or player name.'},
+          {q:'The player presses the LEFT arrow key and the sprite moves. What concept is this?',opts:['A loop','A variable','A sequence','An event'],ans:3,why:'Responding to a key press is an event. The event triggers a set of code — in this case, moving the sprite left.'},
+          {q:'The game checks: "if touching star then add 1 to score". What concept is this?',opts:['A loop','A sequence','A condition','A variable'],ans:2,why:'Checking "if touching star" is a condition. If it\'s true, the score increases; if false, nothing happens. That\'s a conditional decision.'},
+        ],
+        [
+          {q:'A Scratch game has a score, lives, a moving character, falling objects, and a game-over screen. How many of the 5 core concepts does this use?',opts:['1','2','3','All 5'],ans:3,why:'Score and lives are variables. Movement uses sequences and loops. Falling objects use loops. Key presses use events. Game over uses conditions. All 5 concepts work together.'},
+          {q:'The game ends when lives reach zero. Which two concepts work together here?',opts:['Loop and sequence','Variable (lives) and condition (if lives == 0)','Event and loop','Sequence and variable'],ans:1,why:'lives is a variable that decreases. The condition "if lives == 0" checks whether game over has been reached. Variable + condition working together.'},
+          {q:'What happens if you forget the loop in a Scratch game?',opts:['The game runs perfectly','The game runs once — one frame — and stops immediately','The game runs faster','Only the score stops working'],ans:1,why:'Without a loop, the game executes its setup once and ends. The player never gets a chance to interact. The forever loop is what makes a game interactive and ongoing.'},
+          {q:'Your Scratch game has sprites for the player, enemies, and stars. Each has its own scripts. What concept enables different sprites to react to the same broadcast?',opts:['Variables','Loops','Events — "When I receive" on each sprite','Sequences'],ans:2,why:'"When I receive [message]" lets every sprite react when a broadcast is sent. Broadcasting "game-over" can simultaneously stop movement, show a message, and play a sound.'},
+        ],
+        [
+          {q:'You want the star to appear in a random position each time it is caught. Which concept and Scratch block handles this?',opts:['A condition using "if touching"','A variable storing the position','A sequence using "go to x: (random) y: (random)"','An event using "when sprite clicked"'],ans:2,why:'"Go to x: (pick random) y: (pick random)" moves the sprite to a random location. This is a sequence step that runs each time the star is caught.'},
+          {q:'The game gets faster as the score increases. Which concepts make this work?',opts:['Only events','Variable (score) and condition (if score > 10, increase speed variable)','Only a loop','Only a sequence'],ans:1,why:'The score variable is tracked. A condition checks if score crosses a threshold. If true, the speed variable increases. Variable + condition + variable update.'},
+          {q:'What is "decomposition" in programming?',opts:['Deleting parts of a program','Breaking a complex problem into smaller, manageable parts','Combining two programs into one','Removing variables'],ans:1,why:'Decomposition means breaking a big problem into smaller pieces. Building a game: design the player, then enemies, then scoring, then game over — each piece is manageable.'},
+          {q:'Why is it good practice to test each part of a Scratch game as you build it?',opts:['It is not good practice — test only at the end','Testing as you go helps identify which specific part caused a bug before the program grows too complex','Testing during development is slower','Scratch does not allow mid-build testing'],ans:1,why:'Testing incrementally means bugs are caught early when the code is small and the problem is easy to locate. Waiting until the end means hunting through a much larger, more complex program.'},
+        ],
       ]
     },
 

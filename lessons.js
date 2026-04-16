@@ -382,13 +382,31 @@ function switchTab(btn, tab, lessonId) {
 }
 
 // ─── TEST RENDERER ────────────────────────────────────
+function getQuestionSets(lesson) {
+  if (lesson.questionSets) return lesson.questionSets;
+  return [lesson.questions];
+}
+
 function renderTest(lesson, unit) {
+  if (!testState[lesson.id]) testState[lesson.id] = {};
+  if (testState[lesson.id].setIdx === undefined) {
+    const sets = getQuestionSets(lesson);
+    testState[lesson.id].setIdx = Math.floor(Math.random() * sets.length);
+  }
+  const sets = getQuestionSets(lesson);
+  const setIdx = testState[lesson.id].setIdx;
+  const questions = sets[setIdx];
   const letters = ['A','B','C','D'];
   return `
     <div id="test-${lesson.id}">
-      ${lesson.questions.map((q, qi) => `
+      ${sets.length > 1 ? `
+        <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:1.2rem;flex-wrap:wrap">
+          <span style="font-size:0.85rem;color:#888;font-family:'Lexend',sans-serif">Question set ${setIdx + 1} of ${sets.length}</span>
+          <button class="btn btn-outline btn-sm" onclick="cycleTestSet('${lesson.id}')">🔀 Different questions</button>
+        </div>` : ''}
+      ${questions.map((q, qi) => `
         <div class="q-card" id="qcard-${lesson.id}-${qi}">
-          <div class="q-num">Question ${qi+1} of ${lesson.questions.length}</div>
+          <div class="q-num">Question ${qi+1} of ${questions.length}</div>
           <div class="q-text">${q.q}</div>
           <div class="a-opts">
             ${q.opts.map((opt, ai) => `
@@ -403,6 +421,9 @@ function renderTest(lesson, unit) {
           <div class="q-fb" id="fb-${lesson.id}-${qi}"></div>
         </div>
       `).join('')}
+      <div style="margin-top:1rem">
+        <button class="btn btn-outline" onclick="retryTest('${lesson.id}')">Reset test 🔄</button>
+      </div>
       <div class="score-wrap" id="score-${lesson.id}">
         <div class="score-num" id="score-num-${lesson.id}"></div>
         <div class="score-bar-wrap"><div class="score-bar" id="score-bar-${lesson.id}" style="width:0"></div></div>
@@ -441,7 +462,9 @@ function confirmAnswer(lessonId, qIdx) {
   const aIdx = testState[lessonId]?.[`sel${qIdx}`];
   if (aIdx === undefined) return;
 
-  const q = lesson.questions[qIdx];
+  const sets = getQuestionSets(lesson);
+  const setIdx = testState[lessonId]?.setIdx ?? 0;
+  const q = sets[setIdx][qIdx];
   card.dataset.answered = '1';
 
   const btns = card.querySelectorAll('.a-btn');
@@ -455,19 +478,33 @@ function confirmAnswer(lessonId, qIdx) {
   const confirmBtn = document.getElementById(`confirm-${lessonId}-${qIdx}`);
   if (confirmBtn) confirmBtn.style.display = 'none';
 
-  // record result (only non-pending keys count toward score)
+  // record result
   testState[lessonId][qIdx] = aIdx === q.ans;
 
   // show score when all 4 confirmed
-  const confirmed = lesson.questions.filter((_, i) => testState[lessonId][i] !== undefined).length;
-  if (confirmed === lesson.questions.length) showScore(lessonId);
+  const currentSet = sets[setIdx];
+  const confirmed = currentSet.filter((_, i) => testState[lessonId][i] !== undefined).length;
+  if (confirmed === currentSet.length) showScore(lessonId);
+}
+
+function cycleTestSet(lessonId) {
+  const lesson = findLesson(lessonId);
+  const sets = getQuestionSets(lesson);
+  const current = testState[lessonId]?.setIdx ?? 0;
+  const nextIdx = (current + 1) % sets.length;
+  testState[lessonId] = { setIdx: nextIdx };
+  const unit = findUnit(lessonId);
+  const panel = document.getElementById(`tab-test-${lessonId}`);
+  if (panel) panel.innerHTML = renderTest(lesson, unit);
 }
 
 function showScore(lessonId) {
   const lesson = findLesson(lessonId);
-  // only count confirmed answers (numeric keys 0,1,2,3) — ignore pending sel* keys
-  const correct = lesson.questions.filter((_, i) => testState[lessonId][i] === true).length;
-  const total = lesson.questions.length;
+  const sets = getQuestionSets(lesson);
+  const setIdx = testState[lessonId]?.setIdx ?? 0;
+  const currentSet = sets[setIdx];
+  const correct = currentSet.filter((_, i) => testState[lessonId][i] === true).length;
+  const total = currentSet.length;
   const pct = Math.round((correct / total) * 100);
 
   const wrap = document.getElementById(`score-${lessonId}`);
@@ -486,7 +523,8 @@ function showScore(lessonId) {
 }
 
 function retryTest(lessonId) {
-  testState[lessonId] = {};
+  const prevSetIdx = testState[lessonId]?.setIdx ?? 0;
+  testState[lessonId] = { setIdx: prevSetIdx };
   const lesson = findLesson(lessonId);
   const unit   = findUnit(lessonId);
   const panel  = document.getElementById(`tab-test-${lessonId}`);

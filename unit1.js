@@ -116,11 +116,25 @@ window.UNIT1 = {
         </div>
         <div class="terminal-tip">💡 <strong>To open the terminal in VS Code:</strong> Press <strong>Ctrl + \`</strong> (the key above Tab). Then type <strong>python</strong> and press Enter to start.</div>
       `,
-      questions: [
-        { q: 'What is a bit?', opts: ['A type of computer program','The smallest unit of digital data — either 0 or 1','A unit of internet speed','8 bytes of memory'], ans: 1, why: 'A bit is the smallest possible piece of digital data. It can only ever be 0 (off) or 1 (on).' },
-        { q: 'How many bits make one byte?', opts: ['4','16','8','2'], ans: 2, why: '8 bits grouped together make 1 byte. One byte is enough to store a single character like the letter A.' },
-        { q: 'Which of these is an example of ANALOGUE data?', opts: ['A barcode','The reading on a mercury thermometer','A digital clock display','A computer file'], ans: 1, why: 'A mercury thermometer is analogue — the mercury rises smoothly through every possible value. Digital devices jump between fixed steps.' },
-        { q: 'A computer can only understand two states. What are they?', opts: ['Yes and No','True and False','On (1) and Off (0)','Big and Small'], ans: 2, why: 'All digital computers work with just two electrical states — ON (represented as 1) and OFF (represented as 0). Everything else is built from combinations of these.' },
+      questionSets: [
+        [
+          { q: 'What is a bit?', opts: ['A type of computer program','The smallest unit of digital data — either 0 or 1','A unit of internet speed','8 bytes of memory'], ans: 1, why: 'A bit is the smallest possible piece of digital data. It can only ever be 0 (off) or 1 (on).' },
+          { q: 'How many bits make one byte?', opts: ['4','16','8','2'], ans: 2, why: '8 bits grouped together make 1 byte. One byte is enough to store a single character like the letter A.' },
+          { q: 'Which of these is an example of ANALOGUE data?', opts: ['A barcode','The reading on a mercury thermometer','A digital clock display','A computer file'], ans: 1, why: 'A mercury thermometer is analogue — the mercury rises smoothly through every possible value. Digital devices jump between fixed steps.' },
+          { q: 'A computer can only understand two states. What are they?', opts: ['Yes and No','True and False','On (1) and Off (0)','Big and Small'], ans: 2, why: 'All digital computers work with just two electrical states — ON (represented as 1) and OFF (represented as 0). Everything else is built from combinations of these.' },
+        ],
+        [
+          { q: 'What does "digital" mean when describing data?', opts: ['Data printed on paper','Data stored as continuous values','Data represented using only two states: 0 and 1','Data that changes over time'], ans: 2, why: 'Digital means data is represented using discrete values — specifically 0s and 1s. Everything a computer stores or processes is digital.' },
+          { q: 'Which of these stores data in an ANALOGUE way?', opts: ['A USB stick','A vinyl record','A JPEG photo','A smartphone'], ans: 1, why: 'A vinyl record stores sound as a physical groove that varies continuously — that is analogue. The others store data as 0s and 1s.' },
+          { q: 'Why do computers use binary (only 0 and 1) instead of more digits?', opts: ['It was invented that way by accident','Binary is easier for humans to read','Electronic circuits are simplest with just two states: on and off','0 and 1 are the only real numbers'], ans: 2, why: 'A circuit is either on or off. Those two physical states map perfectly to 1 and 0. Using more states would make circuits far more complex and error-prone.' },
+          { q: 'What is a pixel?', opts: ['A unit of sound quality','A tiny square of colour that makes up a digital image','A type of processor','A unit of internet speed'], ans: 1, why: 'Every digital image is made from millions of tiny coloured squares called pixels — short for picture elements.' },
+        ],
+        [
+          { q: 'Which best describes the difference between analogue and digital?', opts: ['Analogue is newer than digital','Digital uses only fixed values (0/1); analogue can be any value in a continuous range','Analogue is always higher quality','Digital can only store text'], ans: 1, why: 'Analogue data is continuous — it can take any value. Digital is discrete — always one of a fixed set of values, usually 0 or 1.' },
+          { q: 'What does a computer use to represent ALL types of data — text, images, sound?', opts: ['Letters and numbers','Colours','0s and 1s','Words'], ans: 2, why: 'Everything inside a computer — text, images, sound, video — is ultimately stored and processed as 0s and 1s.' },
+          { q: 'Which of these is NOT a type of digital data?', opts: ['An MP3 song','A text message','The warmth of sunlight on your skin','A digital photo'], ans: 2, why: 'The warmth of sunlight is a physical sensation that cannot be stored. The others can all be encoded and stored as digital data.' },
+          { q: 'A vinyl record is analogue. When music is converted to digital (like MP3), what happens?', opts: ['The sound becomes continuous','The sound wave is sampled thousands of times per second and stored as numbers','The music is stored as pictures','The sound gets louder'], ans: 1, why: 'Analogue-to-digital conversion samples the sound wave at regular intervals and stores each measurement as a number — turning continuous sound into discrete digital data.' },
+        ],
       ]
     },
 
@@ -187,6 +201,35 @@ window.UNIT1 = {
         <div class="learn-block">
           <h3>💻 Python converting between binary and denary</h3>
           <p>Python can convert numbers instantly. Use <code style="background:var(--warm);padding:0.1em 0.4em;border-radius:4px">bin()</code> to go denary→binary and <code style="background:var(--warm);padding:0.1em 0.4em;border-radius:4px">int(x, 2)</code> to go binary→denary.</p>
+          <div class="story-box" style="margin-top:0.9rem">
+            <p><strong>What does the 2 mean?</strong><br>
+            "Base" just means <em>how many different digits a counting system uses</em>.</p>
+            <p style="margin-top:0.7rem"><strong>Base 10 — the way humans count</strong><br>
+            We use 10 digits: <strong>0 1 2 3 4 5 6 7 8 9</strong><br>
+            (Probably because we have 10 fingers!)<br><br>
+            When you count up and hit <strong>9</strong>, you've run out of digits. So the ones column resets to 0 and you add a 1 in the next column to the left:</p>
+            <div style="font-family:'Fira Code',monospace;background:#f0e8d8;border-radius:8px;padding:0.7rem 1rem;margin:0.6rem 0;font-size:0.92rem;line-height:2">
+              <span style="color:#888">tens | ones</span><br>
+              &nbsp;&nbsp;0 &nbsp;&nbsp;| &nbsp;&nbsp;7<br>
+              &nbsp;&nbsp;0 &nbsp;&nbsp;| &nbsp;&nbsp;8<br>
+              &nbsp;&nbsp;0 &nbsp;&nbsp;| &nbsp;&nbsp;9 &nbsp;&nbsp;<span style="color:#c0392b">← used all 10 digits (0–9), no more room</span><br>
+              &nbsp;&nbsp;1 &nbsp;&nbsp;| &nbsp;&nbsp;0 &nbsp;&nbsp;<span style="color:#1b9e5a">← ones resets to 0, tens goes up by 1 → "10"</span><br>
+              &nbsp;&nbsp;1 &nbsp;&nbsp;| &nbsp;&nbsp;1<br>
+            </div>
+            <p style="margin-top:0.7rem"><strong>Base 2 — the way computers count</strong><br>
+            Computers only use 2 digits: <strong>0 1</strong><br><br>
+            When you count up and hit <strong>1</strong>, you've already run out. So the same thing happens — ones resets to 0, carry a 1 left:</p>
+            <div style="font-family:'Fira Code',monospace;background:#f0e8d8;border-radius:8px;padding:0.7rem 1rem;margin:0.6rem 0;font-size:0.92rem;line-height:2">
+              <span style="color:#888">twos | ones</span><br>
+              &nbsp;&nbsp;0 &nbsp;&nbsp;| &nbsp;&nbsp;0 &nbsp;&nbsp;<span style="color:#888">= 0</span><br>
+              &nbsp;&nbsp;0 &nbsp;&nbsp;| &nbsp;&nbsp;1 &nbsp;&nbsp;<span style="color:#c0392b">← used all 2 digits (0–1), no more room</span><br>
+              &nbsp;&nbsp;1 &nbsp;&nbsp;| &nbsp;&nbsp;0 &nbsp;&nbsp;<span style="color:#1b9e5a">← ones resets to 0, twos goes up by 1 → still means "2"</span><br>
+              &nbsp;&nbsp;1 &nbsp;&nbsp;| &nbsp;&nbsp;1 &nbsp;&nbsp;<span style="color:#888">= 3</span><br>
+            </div>
+            <p><strong>What does "int" mean?</strong><br>
+            <code style="background:var(--warm);padding:0.1em 0.3em;border-radius:3px">int</code> is short for <strong>integer</strong> — a whole number with no decimal point (1, 42, 255 — not 3.14).<br>
+            So <code style="background:var(--warm);padding:0.1em 0.3em;border-radius:3px">int('1000001', 2)</code> means: <em>"convert this to a whole number, reading it as base 2."</em> Without the 2, Python wouldn't know which system you meant.</p>
+          </div>
         </div>
         <div class="code-panel">
           <div class="code-top">
@@ -198,7 +241,7 @@ window.UNIT1 = {
 <span class="cf">print</span>(<span class="cf">bin</span>(<span class="cn">255</span>))       <span class="cc"># → 0b11111111 (all 8 bits ON)</span>
 <span class="cf">print</span>(<span class="cf">bin</span>(<span class="cn">10</span>))        <span class="cc"># → 0b1010</span>
 
-<span class="cc"># Binary → Denary  (the 2 means "this is base 2")</span>
+<span class="cc"># Binary → Denary  (2 = "read this in base 2 — a system with only 2 digits")</span>
 <span class="cf">print</span>(<span class="cf">int</span>(<span class="cs">'1000001'</span>, <span class="cn">2</span>))  <span class="cc"># → 65</span>
 <span class="cf">print</span>(<span class="cf">int</span>(<span class="cs">'11111111'</span>, <span class="cn">2</span>)) <span class="cc"># → 255</span>
 
@@ -216,11 +259,25 @@ window.UNIT1 = {
         </div>
         <div class="terminal-tip">💡 That <code>for</code> loop above goes through every number from 65 to 90 and prints the letter AND its binary. Try changing 65 and 91 to other numbers!</div>
       `,
-      questions: [
-        { q: 'What is the denary value of binary 00001010?', opts: ['5','10','12','8'], ans: 1, why: '8+2 = 10. Columns 8 and 2 are switched ON (the 1s), so we add 8 + 2 = 10.' },
-        { q: 'How many different values can ONE bit represent?', opts: ['1','2','8','10'], ans: 1, why: 'One bit can only be 0 or 1 — that\'s 2 different values.' },
-        { q: 'What is the binary for denary 8?', opts: ['00001000','00000110','00001100','10000000'], ans: 0, why: 'The 8 column is the 4th from the right. So only that bit is ON: 00001000.' },
-        { q: 'What is the maximum denary value you can store in 8 bits?', opts: ['128','127','255','256'], ans: 2, why: 'With all 8 bits ON (11111111): 128+64+32+16+8+4+2+1 = 255.' },
+      questionSets: [
+        [
+          { q: 'What is the denary value of binary 00001010?', opts: ['5','10','12','8'], ans: 1, why: '8+2 = 10. Columns 8 and 2 are switched ON (the 1s), so we add 8 + 2 = 10.' },
+          { q: 'How many different values can ONE bit represent?', opts: ['1','2','8','10'], ans: 1, why: 'One bit can only be 0 or 1 — that\'s 2 different values.' },
+          { q: 'What is the binary for denary 8?', opts: ['00001000','00000110','00001100','10000000'], ans: 0, why: 'The 8 column is the 4th from the right. So only that bit is ON: 00001000.' },
+          { q: 'What is the maximum denary value you can store in 8 bits?', opts: ['128','127','255','256'], ans: 2, why: 'With all 8 bits ON (11111111): 128+64+32+16+8+4+2+1 = 255.' },
+        ],
+        [
+          { q: 'What is the denary value of binary 00001111?', opts: ['8','15','16','7'], ans: 1, why: '8+4+2+1 = 15. The four rightmost bits are all ON.' },
+          { q: 'Which binary number represents denary 5?', opts: ['00000110','00000100','00000101','00001010'], ans: 2, why: '4+1 = 5, so the 4-column and 1-column bits are ON: 00000101.' },
+          { q: 'How many bits are in one byte?', opts: ['4','16','2','8'], ans: 3, why: 'One byte is always 8 bits. It is the standard unit used to store a single character.' },
+          { q: 'What does the Python function bin(10) return?', opts: ["'0b1010'","'10'","'1010'","'0b1111'"], ans: 0, why: "bin() returns a string starting with '0b' to show it is binary, followed by the binary digits. 10 in binary is 1010." },
+        ],
+        [
+          { q: 'In binary, what comes after 0111?', opts: ['0110','1000','1001','0100'], ans: 1, why: '0111 is 7. The next number is 8. All lower bits reset to 0 and a 1 is carried left: 1000.' },
+          { q: 'What is 11111111 in denary?', opts: ['128','256','254','255'], ans: 3, why: '128+64+32+16+8+4+2+1 = 255. All 8 bits are ON.' },
+          { q: 'Which Python function converts a denary number to its binary representation?', opts: ['int()','str()','bin()','chr()'], ans: 2, why: 'bin() takes a denary integer and returns a string showing its binary value, prefixed with 0b.' },
+          { q: 'What is the denary value of the leftmost bit in an 8-bit number?', opts: ['1','64','128','256'], ans: 2, why: 'The leftmost (most significant) bit in an 8-bit number represents 2⁷ = 128.' },
+        ],
       ]
     },
 
@@ -311,11 +368,25 @@ window.UNIT1 = {
 <span class="bx"># This shows how much RAM your computer has free right now</span></pre>
         </div>
       `,
-      questions: [
-        { q: 'What happens to data in RAM when the computer is switched off?', opts: ['It stays forever','It moves to the hard drive','It is lost','It is compressed'], ans: 2, why: 'RAM is volatile — it needs power to hold data. Switch off the power and everything in RAM disappears immediately.' },
-        { q: 'Which type of storage is FASTEST?', opts: ['Hard disk drive (HDD)','USB stick','RAM','DVD'], ans: 2, why: 'RAM is much faster than any storage device because it\'s directly connected to the CPU with no moving parts.' },
-        { q: 'When you open a document, what happens?', opts: ['The CPU edits the file directly on the hard drive','A copy of the file is loaded from storage into RAM','The file is deleted from storage','Nothing — the file stays on the hard drive'], ans: 1, why: 'Opening a file copies it from storage into RAM so the CPU can access it quickly. The original stays on the hard drive.' },
-        { q: 'Which best describes secondary storage?', opts: ['Fast, temporary, loses data when power off','Slow, permanent, keeps data when power off','Inside the CPU','Only used for the operating system'], ans: 1, why: 'Secondary storage (hard drives, SSDs, USBs) is slower than RAM but keeps data permanently, even without power.' },
+      questionSets: [
+        [
+          { q: 'What happens to data in RAM when the computer is switched off?', opts: ['It stays forever','It moves to the hard drive','It is lost','It is compressed'], ans: 2, why: 'RAM is volatile — it needs power to hold data. Switch off the power and everything in RAM disappears immediately.' },
+          { q: 'Which type of storage is FASTEST?', opts: ['Hard disk drive (HDD)','USB stick','RAM','DVD'], ans: 2, why: 'RAM is much faster than any storage device because it\'s directly connected to the CPU with no moving parts.' },
+          { q: 'When you open a document, what happens?', opts: ['The CPU edits the file directly on the hard drive','A copy of the file is loaded from storage into RAM','The file is deleted from storage','Nothing — the file stays on the hard drive'], ans: 1, why: 'Opening a file copies it from storage into RAM so the CPU can access it quickly. The original stays on the hard drive.' },
+          { q: 'Which best describes secondary storage?', opts: ['Fast, temporary, loses data when power off','Slow, permanent, keeps data when power off','Inside the CPU','Only used for the operating system'], ans: 1, why: 'Secondary storage (hard drives, SSDs, USBs) is slower than RAM but keeps data permanently, even without power.' },
+        ],
+        [
+          { q: 'Why does a computer need BOTH RAM and a hard drive?', opts: ['They store different file types','RAM is fast but temporary; hard drives are slower but permanent','Hard drives are faster than RAM','RAM stores photos, hard drives store music'], ans: 1, why: 'RAM gives the CPU fast access to current work. The hard drive keeps everything permanently. Both are needed for a working computer.' },
+          { q: 'What does SSD stand for?', opts: ['Super Speed Drive','Solid State Drive','Secondary Storage Device','Simple System Disk'], ans: 1, why: 'SSD stands for Solid State Drive. It has no moving parts, making it faster and more durable than a traditional spinning hard drive.' },
+          { q: 'What type of storage is a USB stick?', opts: ['RAM','Primary storage','Secondary storage','CPU cache'], ans: 2, why: 'A USB stick is secondary storage — it keeps data permanently without power, just like a hard drive.' },
+          { q: 'What is the main advantage of an SSD over a traditional hard drive?', opts: ['More storage space','Cheaper price','No moving parts — faster and more reliable','Louder operation'], ans: 2, why: 'SSDs use flash memory with no spinning parts — they are faster, quieter, and less likely to break if dropped.' },
+        ],
+        [
+          { q: 'Your computer has 8 GB of RAM. What does this affect most?', opts: ['How much music you can store permanently','How many programs you can run at the same time without slowing down','How fast your internet is','The quality of your screen'], ans: 1, why: 'RAM is the workspace — more RAM means more programs can be open and active at once without the computer slowing down.' },
+          { q: 'You save a document. Where does it go?', opts: ['RAM','The CPU','Secondary storage (hard drive or SSD)','The graphics card'], ans: 2, why: 'Saving copies data from temporary RAM into permanent secondary storage so it survives when you close the file or turn off the computer.' },
+          { q: 'Which of these is PRIMARY storage?', opts: ['A hard drive','A USB stick','RAM','A DVD'], ans: 2, why: 'Primary storage (RAM) is directly accessed by the CPU. Secondary storage (hard drives, USB) requires data to be loaded into RAM first.' },
+          { q: 'A file is in RAM. What is NOT true about it?', opts: ['The CPU can access it very quickly','It will be lost if the power goes off','It is permanently saved','It is the version currently being worked on'], ans: 2, why: 'RAM is volatile — data in RAM is NOT permanently saved. It disappears when power is cut. You must save to secondary storage to keep it.' },
+        ],
       ]
     },
 
@@ -401,11 +472,25 @@ window.UNIT1 = {
 <span class="bo">4</span></pre>
         </div>
       `,
-      questions: [
-        { q: 'How many bytes are in 1 kilobyte (KB)?', opts: ['100','1,000','8','1,024 (approximately 1,000)'], ans: 3, why: 'Technically 1 KB = 1,024 bytes, but we often round to 1,000. The 1,024 comes from binary (2^10 = 1,024).' },
-        { q: 'A high-quality photo is most likely which size?', opts: ['5 bytes','5 kilobytes','5 megabytes','5 terabytes'], ans: 2, why: 'A typical smartphone photo is 3–8 MB. Bytes and kilobytes would be far too small; terabytes are enormous.' },
-        { q: 'Put these in order from SMALLEST to LARGEST:', opts: ['Bit, Byte, KB, MB, GB, TB','Byte, Bit, KB, MB, GB, TB','KB, MB, Bit, Byte, GB, TB','TB, GB, MB, KB, Byte, Bit'], ans: 0, why: 'The correct order is: Bit (smallest) → Byte → Kilobyte → Megabyte → Gigabyte → Terabyte (largest).' },
-        { q: 'A 1 TB hard drive can store approximately how many 4 MB photos?', opts: ['250','2,500','25,000','250,000'], ans: 3, why: '1 TB = 1,000,000 MB. 1,000,000 ÷ 4 = 250,000 photos. That\'s a lot of selfies!' },
+      questionSets: [
+        [
+          { q: 'How many bytes are in 1 kilobyte (KB)?', opts: ['100','1,000','8','1,024 (approximately 1,000)'], ans: 3, why: 'Technically 1 KB = 1,024 bytes, but we often round to 1,000. The 1,024 comes from binary (2^10 = 1,024).' },
+          { q: 'A high-quality photo is most likely which size?', opts: ['5 bytes','5 kilobytes','5 megabytes','5 terabytes'], ans: 2, why: 'A typical smartphone photo is 3–8 MB. Bytes and kilobytes would be far too small; terabytes are enormous.' },
+          { q: 'Put these in order from SMALLEST to LARGEST:', opts: ['Bit, Byte, KB, MB, GB, TB','Byte, Bit, KB, MB, GB, TB','KB, MB, Bit, Byte, GB, TB','TB, GB, MB, KB, Byte, Bit'], ans: 0, why: 'The correct order is: Bit (smallest) → Byte → Kilobyte → Megabyte → Gigabyte → Terabyte (largest).' },
+          { q: 'A 1 TB hard drive can store approximately how many 4 MB photos?', opts: ['250','2,500','25,000','250,000'], ans: 3, why: '1 TB = 1,000,000 MB. 1,000,000 ÷ 4 = 250,000 photos. That\'s a lot of selfies!' },
+        ],
+        [
+          { q: 'How many kilobytes are in 1 megabyte?', opts: ['8','100','1,000','1,024'], ans: 3, why: '1 MB = 1,024 KB. Each step up the scale multiplies by roughly 1,000 (or exactly 1,024 in binary).' },
+          { q: 'A typical MP3 song is about 5 MB. How many songs fit on a 1 GB drive?', opts: ['About 20','About 200','About 2,000','About 20,000'], ans: 1, why: '1 GB ≈ 1,000 MB. 1,000 ÷ 5 = 200 songs.' },
+          { q: 'Which unit would you use to measure the size of a single text message?', opts: ['Gigabytes','Terabytes','Bytes or kilobytes','Petabytes'], ans: 2, why: 'A short text message is just a few hundred characters — bytes or kilobytes is the right scale.' },
+          { q: 'What comes after terabyte in the size scale?', opts: ['Gigabyte','Megabyte','Petabyte','Exabyte'], ans: 2, why: 'The order is: byte → kilobyte → megabyte → gigabyte → terabyte → petabyte. Petabyte is next.' },
+        ],
+        [
+          { q: 'A 4K video file is 50 GB. How many fit on a 1 TB drive?', opts: ['2','20','200','2,000'], ans: 1, why: '1 TB ≈ 1,000 GB. 1,000 ÷ 50 = 20 videos.' },
+          { q: 'Why do computers use powers of 2 for storage sizes (1,024 not 1,000)?', opts: ['It looks nicer','Binary works in base 2, so memory naturally groups in powers of 2','It is an international standard from 1950','Hard drives can only be built in those sizes'], ans: 1, why: 'Binary is base 2, so memory chips naturally double: 2, 4, 8, 16 ... 512, 1024. Storage sizes follow the same pattern.' },
+          { q: 'A photo is 3.5 MB. Roughly how many fit in 1 GB?', opts: ['About 30','About 300','About 3,000','About 30,000'], ans: 1, why: '1 GB ≈ 1,000 MB. 1,000 ÷ 3.5 ≈ 285 — so about 300 photos.' },
+          { q: 'Which is larger: 500 MB or 0.5 GB?', opts: ['500 MB is larger','0.5 GB is larger','They are the same size','It depends on the file type'], ans: 2, why: '0.5 GB = 500 MB exactly. They are the same size — just written differently.' },
+        ],
       ]
     },
 
@@ -481,11 +566,25 @@ window.UNIT1 = {
 <span class="cf">print</span>(<span class="cs">f"</span><span class="cv">{total_bytes / 1024:.2f}</span><span class="cs"> KB"</span>)   <span class="cc"># → 29.30 KB</span></pre>
         </div>
       `,
-      questions: [
-        { q: 'What is a pixel?', opts: ['A type of photo editing software','The smallest dot in a digital image','A measurement of screen brightness','A file format for images'], ans: 1, why: 'A pixel (picture element) is the smallest individual dot in a digital image. Each has exactly one colour.' },
-        { q: 'A screen has resolution 1920 × 1080. How many pixels is that?', opts: ['1,920','3,000','2,073,600','108,000'], ans: 2, why: '1920 × 1080 = 2,073,600 pixels. That\'s over 2 million tiny dots making up every frame you see!' },
-        { q: 'In 24-bit colour, how many bits are used per pixel?', opts: ['3','8','16','24'], ans: 3, why: '24-bit colour uses 8 bits each for Red, Green, and Blue — that\'s 3 × 8 = 24 bits per pixel.' },
-        { q: 'If you increase an image\'s resolution, what else increases?', opts: ['Brightness','File size','Playback speed','Colour accuracy only'], ans: 1, why: 'More pixels = more data stored = larger file size. Higher resolution images take more storage space.' },
+      questionSets: [
+        [
+          { q: 'What is a pixel?', opts: ['A type of photo editing software','The smallest dot in a digital image','A measurement of screen brightness','A file format for images'], ans: 1, why: 'A pixel (picture element) is the smallest individual dot in a digital image. Each has exactly one colour.' },
+          { q: 'A screen has resolution 1920 × 1080. How many pixels is that?', opts: ['1,920','3,000','2,073,600','108,000'], ans: 2, why: '1920 × 1080 = 2,073,600 pixels. That\'s over 2 million tiny dots making up every frame you see!' },
+          { q: 'In 24-bit colour, how many bits are used per pixel?', opts: ['3','8','16','24'], ans: 3, why: '24-bit colour uses 8 bits each for Red, Green, and Blue — that\'s 3 × 8 = 24 bits per pixel.' },
+          { q: 'If you increase an image\'s resolution, what else increases?', opts: ['Brightness','File size','Playback speed','Colour accuracy only'], ans: 1, why: 'More pixels = more data stored = larger file size. Higher resolution images take more storage space.' },
+        ],
+        [
+          { q: 'What does "resolution" mean for a digital image?', opts: ['How bright the screen is','How many pixels wide and tall the image is','The number of colours used','The file format'], ans: 1, why: 'Resolution describes how many pixels make up the image — e.g. 1920×1080 means 1920 pixels wide, 1080 tall.' },
+          { q: 'What colour model does a screen use to create all colours?', opts: ['CMYK (cyan, magenta, yellow, black)','RGB (red, green, blue)','HSL (hue, saturation, lightness)','BWG (black, white, grey)'], ans: 1, why: 'Screens mix red, green, and blue light at different intensities to create every visible colour. This is called the RGB model.' },
+          { q: 'Why do images look pixelated when you zoom in a lot?', opts: ['The screen breaks','You can see the individual square pixels that make up the image','The file becomes corrupted','The colours change'], ans: 1, why: 'Every digital image is a grid of squares. Zoom in far enough and those squares become visible — that is pixelation.' },
+          { q: 'If a pixel stores 8 bits each for R, G, and B, how many bits total per pixel?', opts: ['8','16','24','32'], ans: 2, why: '8 bits × 3 colour channels (R, G, B) = 24 bits per pixel. This is called 24-bit or true colour.' },
+        ],
+        [
+          { q: 'What happens to image quality when you DECREASE resolution?', opts: ['It gets better','It gets worse — less detail, blockier','It stays the same','The colours change'], ans: 1, why: 'Fewer pixels means less detail. Small images appear blocky or blurry when stretched, because there is not enough pixel data to fill the space.' },
+          { q: 'A black-and-white image only needs how many bits per pixel?', opts: ['24','8','1','4'], ans: 2, why: 'Black or white — that is just two options, which requires only 1 bit (0 = black, 1 = white) per pixel.' },
+          { q: 'What is colour depth?', opts: ['How dark the image is','How many bits are used to store each pixel\'s colour','The physical size of the screen','The brightness setting'], ans: 1, why: 'Colour depth is how many bits store each pixel. More bits = more possible colours. 24-bit gives over 16 million possible colours per pixel.' },
+          { q: 'Which has a higher resolution: 800×600 or 1920×1080?', opts: ['800×600','1920×1080','They are the same','Resolution depends on screen size not pixels'], ans: 1, why: '1920×1080 = over 2 million pixels. 800×600 = 480,000 pixels. 1920×1080 has roughly 4× more pixels and far more detail.' },
+        ],
       ]
     },
 
@@ -562,11 +661,25 @@ window.UNIT1 = {
 <span class="bx"># Try changing duration to 60 (1 minute) and re-run!</span></pre>
         </div>
       `,
-      questions: [
-        { q: 'What does "sampling" mean in digital audio?', opts: ['Adding bass to a recording','Measuring the sound wave at regular intervals','Compressing a sound file','Mixing two tracks together'], ans: 1, why: 'Sampling means measuring the height (amplitude) of a sound wave thousands of times per second. Those measurements become the digital audio data.' },
-        { q: 'What is the sample rate of CD-quality audio?', opts: ['441 samples/sec','4,410 samples/sec','44,100 samples/sec','441,000 samples/sec'], ans: 2, why: 'CD audio uses 44,100 samples per second — written as 44.1 kHz. This is enough for the full range of human hearing.' },
-        { q: 'If you increase the sample rate of a recording, what happens?', opts: ['File size decreases and quality improves','File size increases and quality improves','File size increases and quality decreases','Nothing changes'], ans: 1, why: 'More samples = more data = larger file size, but the sound wave is represented more accurately, so quality improves.' },
-        { q: 'Why is an uncompressed audio file much larger than an MP3?', opts: ['MP3s use less bit depth only','MP3s are recorded at lower volume','MP3 compression removes data the ear can\'t detect, shrinking the file','MP3s only store one channel'], ans: 2, why: 'MP3 compression analyses the audio and removes frequencies humans can\'t really hear. The result sounds nearly identical but is ~10x smaller.' },
+      questionSets: [
+        [
+          { q: 'What does "sampling" mean in digital audio?', opts: ['Adding bass to a recording','Measuring the sound wave at regular intervals','Compressing a sound file','Mixing two tracks together'], ans: 1, why: 'Sampling means measuring the height (amplitude) of a sound wave thousands of times per second. Those measurements become the digital audio data.' },
+          { q: 'What is the sample rate of CD-quality audio?', opts: ['441 samples/sec','4,410 samples/sec','44,100 samples/sec','441,000 samples/sec'], ans: 2, why: 'CD audio uses 44,100 samples per second — written as 44.1 kHz. This is enough for the full range of human hearing.' },
+          { q: 'If you increase the sample rate of a recording, what happens?', opts: ['File size decreases and quality improves','File size increases and quality improves','File size increases and quality decreases','Nothing changes'], ans: 1, why: 'More samples = more data = larger file size, but the sound wave is represented more accurately, so quality improves.' },
+          { q: 'Why is an uncompressed audio file much larger than an MP3?', opts: ['MP3s use less bit depth only','MP3s are recorded at lower volume','MP3 compression removes data the ear can\'t detect, shrinking the file','MP3s only store one channel'], ans: 2, why: 'MP3 compression analyses the audio and removes frequencies humans can\'t really hear. The result sounds nearly identical but is ~10x smaller.' },
+        ],
+        [
+          { q: 'What is an audio sample?', opts: ['A free music download','A single measurement of the sound wave at one moment in time','A type of microphone','The title of a song'], ans: 1, why: 'A sample is one measurement of the sound wave\'s height at a specific instant. Thousands of these per second reconstruct the sound.' },
+          { q: 'What unit is used to measure sample rate?', opts: ['MB','Hz (Hertz)','dB (Decibels)','Pixels'], ans: 1, why: 'Sample rate is measured in Hz (Hertz) — meaning "times per second". CD audio = 44,100 Hz = 44.1 kHz.' },
+          { q: 'What does a HIGHER sample rate produce?', opts: ['A quieter sound','A shorter file','A more accurate and smoother digital recording','A lower-pitched sound'], ans: 2, why: 'More samples per second = more accurate picture of the sound wave = smoother, higher quality audio.' },
+          { q: 'Why does higher quality audio take more storage space?', opts: ['It plays for longer','More samples per second means more data to store','Lower quality files use encryption','The speaker needs more power'], ans: 1, why: 'More samples = more numbers to store = larger file. Audio quality and file size are always a trade-off.' },
+        ],
+        [
+          { q: 'What is "clipping" in audio recording?', opts: ['Cutting a section out of a song','When the sound is too loud and the waveform gets cut off, causing distortion','When two audio tracks overlap','A type of file format'], ans: 1, why: 'Clipping happens when the sound level exceeds the maximum recordable level. The peaks get "clipped" flat — causing harsh, permanent distortion.' },
+          { q: 'Which file format stores audio WITHOUT any quality loss?', opts: ['MP3','AAC','WAV','OGG'], ans: 2, why: 'WAV stores every sample exactly with no compression — perfect quality but large file size. MP3 and AAC discard some data to reduce size.' },
+          { q: 'CD audio uses 44,100 Hz. What does that mean?', opts: ['The CD spins 44,100 times per minute','44,100 measurements of the sound wave are taken every second','The maximum volume is 44,100 dB','The CD can store 44,100 songs'], ans: 1, why: '44,100 Hz means 44,100 samples taken each second — enough to accurately capture sounds up to 22,050 Hz, covering the full range of human hearing.' },
+          { q: 'A recording has a low sample rate. What will it sound like?', opts: ['Louder than the original','Blocky and less smooth — missing detail from the original sound wave','Exactly the same as the original','Quieter than the original'], ans: 1, why: 'A low sample rate captures fewer snapshots of the wave, missing detail between measurements. The reconstructed sound is blocky and less accurate.' },
+        ],
       ]
     },
 
