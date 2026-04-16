@@ -13,19 +13,29 @@
 </head>
 <body>
 
-<!-- ══════ HEADER ══════ -->
-<header class="app-header">
-  <div class="app-logo" onclick="goHome()" style="cursor:pointer">CS<span>7</span></div>
-  <div class="breadcrumb" id="breadcrumb">Oxford Book 7 · Choose a lesson</div>
-  <div class="progress-pill" id="progressPill">0 / 24 done</div>
-  <button class="menu-toggle" onclick="toggleSidebar()" aria-label="Open menu">☰</button>
-</header>
+<!-- ══════ AUTH SCREEN ══════ -->
+<div id="authScreen" style="display:none"></div>
 
-<div class="app-body">
-  <!-- sidebar built by lessons.js -->
-  <aside class="sidebar" id="sidebar"></aside>
-  <!-- content built by lessons.js -->
-  <main class="content" id="mainContent"></main>
+<!-- ══════ APP SHELL ══════ -->
+<div id="appShell" style="display:none">
+
+  <!-- HEADER -->
+  <header class="app-header">
+    <div class="app-logo" onclick="goHome()" style="cursor:pointer">CS<span>7</span></div>
+    <div class="breadcrumb" id="breadcrumb">Oxford Book 7 · Choose a lesson</div>
+    <div class="progress-pill" id="progressPill">0 / 36 done</div>
+    <span class="user-label" id="userLabel"></span>
+    <button class="logout-btn" onclick="doLogout()" title="Log out">↩</button>
+    <button class="menu-toggle" onclick="toggleSidebar()" aria-label="Open menu">☰</button>
+  </header>
+
+  <div class="app-body">
+    <!-- sidebar built by lessons.js -->
+    <aside class="sidebar" id="sidebar"></aside>
+    <!-- content built by lessons.js -->
+    <main class="content" id="mainContent"></main>
+  </div>
+
 </div>
 
 <!-- Glossary popup -->
@@ -40,11 +50,20 @@
   </div>
 </div>
 
-<!-- Load unit data first, then the engine -->
+<!-- Supabase CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+
+<!-- Unit data (must load before lessons.js) -->
 <script src="unit1.js"></script>
 <script src="unit2.js"></script>
 <script src="unit3.js"></script>
 <script src="unit4.js"></script>
+<script src="unit5.js"></script>
+<script src="unit6.js"></script>
+
+<!-- Config, auth, then engine -->
+<script src="supabase-config.js"></script>
+<script src="auth.js"></script>
 <script src="lessons.js"></script>
 
 </body>

@@ -195,16 +195,27 @@ function closeGlossary() {
 }
 
 // ─── STATE ───────────────────────────────────────────
-const UNITS_DATA = [window.UNIT1, window.UNIT2, window.UNIT3, window.UNIT4];
+const UNITS_DATA = [window.UNIT1, window.UNIT2, window.UNIT3, window.UNIT4, window.UNIT5, window.UNIT6];
 let currentLesson = null;
-let done = JSON.parse(localStorage.getItem('cs7-done') || '{}');
+let done = {};
 
 // ─── PROGRESS ────────────────────────────────────────
-function markDone(id) {
+async function markDone(id) {
+  if (done[id]) return;
   done[id] = true;
-  localStorage.setItem('cs7-done', JSON.stringify(done));
+  // Save to Supabase
+  if (currentUser) {
+    await sb.from('progress').upsert({ user_id: currentUser.id, lesson_id: id });
+  }
   document.querySelectorAll(`.lesson-btn[data-id="${id}"]`).forEach(b => b.classList.add('done'));
   updateProgressPill();
+}
+
+async function loadProgress() {
+  if (!currentUser) return;
+  const { data } = await sb.from('progress').select('lesson_id').eq('user_id', currentUser.id);
+  done = {};
+  (data || []).forEach(r => { done[r.lesson_id] = true; });
 }
 
 function updateProgressPill() {
@@ -350,7 +361,7 @@ function renderLesson(lesson, unit) {
 
       <div class="lesson-nav">
         ${prev ? `<button class="btn btn-outline" onclick="goLesson('${prev.id}')">← ${prev.title}</button>` : '<span></span>'}
-        <button class="btn btn-primary" onclick="markDone('${lesson.id}');this.textContent='✓ Done!';this.style.background='#1b9e5a'">
+        <button class="btn btn-primary" onclick="markDone('${lesson.id}').then(()=>{this.textContent='✓ Done!';this.style.background='#1b9e5a'})"
           Mark as done ✓
         </button>
         ${next ? `<button class="btn btn-primary" onclick="goLesson('${next.id}')">${next.title} →</button>` : '<span></span>'}
@@ -1654,11 +1665,15 @@ function buildHome() {
 // ═══════════════════════════════════════════════════════
 //  INIT
 // ═══════════════════════════════════════════════════════
-document.addEventListener('DOMContentLoaded', () => {
+async function initApp() {
+  await loadProgress();
   buildSidebar();
   buildHome();
   updateProgressPill();
-  // keyboard left/right navigation
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  // keyboard left/right navigation (always active)
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') { closeGlossary(); return; }
     if (!currentLesson) return;
@@ -1671,4 +1686,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.key === 'ArrowLeft'  && idx > 0)            goLesson(all[idx-1].id);
     }
   });
+  // Boot auth — this will call initApp() once logged in
+  authBoot();
 });
