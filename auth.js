@@ -148,19 +148,35 @@ async function doSignup(correctCode) {
 
   const email = `${nickname}@cs7app.local`;
 
+  let userId;
   const { data, error } = await sb.auth.signUp({ email, password });
+
   if (error) {
-    if (error.message.includes('already registered')) {
-      setAuthError('That nickname is already taken. Choose another.');
-    } else {
+    if (!error.message.includes('already registered')) {
       setAuthError('Could not create account. Try again.');
+      return;
     }
-    return;
+    // Auth user exists but profile may have been deleted — try signing in with same credentials
+    const { data: signInData, error: signInError } = await sb.auth.signInWithPassword({ email, password });
+    if (signInError) {
+      setAuthError('That nickname is already taken. Choose another.');
+      return;
+    }
+    const existing = await loadProfile(signInData.user.id);
+    if (existing) {
+      setAuthError('That nickname is already taken. Choose another.');
+      return;
+    }
+    userId = signInData.user.id;
+    currentUser = signInData.user;
+  } else {
+    userId = data.user.id;
+    currentUser = data.user;
   }
 
   // Insert profile
   const { error: profileError } = await sb.from('profiles').insert({
-    id: data.user.id,
+    id: userId,
     nickname,
     class: cls,
     role: 'student'
@@ -171,8 +187,7 @@ async function doSignup(correctCode) {
     return;
   }
 
-  currentUser = data.user;
-  currentProfile = { id: data.user.id, nickname, class: cls, role: 'student' };
+  currentProfile = { id: userId, nickname, class: cls, role: 'student' };
   showApp();
 }
 
