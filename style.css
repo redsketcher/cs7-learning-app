@@ -34,6 +34,12 @@
 
   --code-bg: #1c1a2e;
   --code-fg: #e2d9f3;
+
+  /* Aliases used in auth + header */
+  --bg:        #16232a;
+  --primary:   #e85d2f;
+  --font:      'Lexend', sans-serif;
+  --text-muted: #6b5f4e;
 }
 
 *, *::before, *::after {
@@ -524,7 +530,7 @@ pre.bb { font-family: 'Fira Code', monospace; font-size: 0.86rem; line-height: 2
   padding: 1rem;
 }
 .auth-card {
-  background: var(--surface);
+  background: var(--cream);
   border-radius: 20px;
   padding: 2.5rem 2rem;
   width: 100%;
@@ -534,7 +540,7 @@ pre.bb { font-family: 'Fira Code', monospace; font-size: 0.86rem; line-height: 2
 .auth-logo {
   font-size: 2.2rem;
   font-weight: 800;
-  color: #fff;
+  color: var(--text);
   text-align: center;
   margin-bottom: 0.4rem;
   letter-spacing: -1px;
@@ -543,8 +549,8 @@ pre.bb { font-family: 'Fira Code', monospace; font-size: 0.86rem; line-height: 2
 .auth-title {
   text-align: center;
   font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--text-muted);
+  font-weight: 700;
+  color: var(--text);
   margin: 0 0 1.6rem;
 }
 .auth-field {
@@ -553,8 +559,8 @@ pre.bb { font-family: 'Fira Code', monospace; font-size: 0.86rem; line-height: 2
 .auth-field label {
   display: block;
   font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-muted);
+  font-weight: 700;
+  color: var(--text);
   margin-bottom: 0.4rem;
 }
 .auth-hint {
@@ -567,7 +573,7 @@ pre.bb { font-family: 'Fira Code', monospace; font-size: 0.86rem; line-height: 2
   padding: 0.75rem 1rem;
   border-radius: 10px;
   border: 1.5px solid var(--border);
-  background: var(--bg);
+  background: #fff;
   color: var(--text);
   font-family: var(--font);
   font-size: 1rem;
@@ -584,8 +590,8 @@ pre.bb { font-family: 'Fira Code', monospace; font-size: 0.86rem; line-height: 2
   padding: 0.85rem;
   border-radius: 12px;
   border: none;
-  background: var(--primary);
-  color: #fff;
+  background: var(--text);
+  color: var(--cream);
   font-family: var(--font);
   font-size: 1rem;
   font-weight: 700;
@@ -593,14 +599,26 @@ pre.bb { font-family: 'Fira Code', monospace; font-size: 0.86rem; line-height: 2
   margin-top: 0.5rem;
   transition: opacity 0.15s;
 }
-.auth-btn:hover { opacity: 0.88; }
+.auth-btn:hover { opacity: 0.82; }
 .auth-switch {
   text-align: center;
   margin-top: 1.2rem;
   font-size: 0.9rem;
-  color: var(--text-muted);
+  color: var(--text);
 }
-.auth-switch a { color: var(--primary); text-decoration: none; font-weight: 600; }
+.auth-switch a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.55rem 1.2rem;
+  border-radius: 10px;
+  border: 2px solid var(--text);
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: background 0.15s, color 0.15s;
+}
+.auth-switch a:hover { background: var(--text); color: var(--cream); }
 .auth-error {
   background: #4a1010;
   color: #ffaaaa;

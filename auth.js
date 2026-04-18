@@ -89,8 +89,8 @@ async function renderAuthScreen(mode) {
         <h2 class="auth-title">Create account</h2>
         <div class="auth-error" id="authError" style="display:none"></div>
         <div class="auth-field">
-          <label>Class code <span class="auth-hint">(ask your teacher)</span></label>
-          <input id="authCode" type="text" placeholder="Enter class code" autocomplete="off" />
+          <label>School code <span class="auth-hint">(e.g. pascal2026)</span></label>
+          <input id="authCode" type="text" placeholder="Enter school code" autocomplete="off" />
         </div>
         <div class="auth-field">
           <label>Your class</label>
@@ -141,7 +141,7 @@ async function doSignup(correctCode) {
   setAuthError('');
 
   if (!code || !cls || !nickname || !password) { setAuthError('Please fill in all fields.'); return; }
-  if (code.toUpperCase() !== correctCode.toUpperCase()) { setAuthError('Class code is incorrect. Ask your teacher.'); return; }
+  if (code.toUpperCase() !== correctCode.toUpperCase()) { setAuthError('School code is incorrect. Ask your teacher.'); return; }
   if (nickname.length < 2) { setAuthError('Nickname must be at least 2 characters.'); return; }
   if (!/^[a-z0-9]+$/i.test(nickname)) { setAuthError('Nickname can only contain letters and numbers.'); return; }
   if (password.length < 6) { setAuthError('Password must be at least 6 characters.'); return; }
